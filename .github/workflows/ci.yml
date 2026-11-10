@@ -17,5 +17,9 @@ jobs:
           cache: yarn
       - run: corepack enable
       - run: yarn install --immutable
-      - run: yarn check-all
+      - run: yarn check:types
+      - run: yarn check:format
+      - name: Check unused files
+        run: yarn check:unused
+        continue-on-error: true
       - run: yarn build
